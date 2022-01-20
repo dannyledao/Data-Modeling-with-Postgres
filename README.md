@@ -2,15 +2,15 @@
 
 # **Introduction**
 
-1.	Background: 
+*1.	Background: *
     
      A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app.
 
-2.	Challenge: 
+*2.	Challenge: *
    
     Currently, there is no easy way to query their data. Songs and user activity data are stored seperately in JASON files format.  
 
-3.	Goal: 
+*3.	Goal: *
     
     Create a PostgreSQL database schema and ETL pipeline to optimize queries that can join both tables.
    
@@ -82,11 +82,11 @@
  ![alt text](https://github.com/dannyledao/Data-Modeling-with-Postgres/blob/567448a37012706b0d6f034f651c92c59218dffc/schema%20table.PNG)
 ## PROJECT STEPS:
 
-1.	Create tables in sql_queries.py and run create_tables.py to create database and tables.
+1.	Create tables in *sql_queries.py* and run *create_tables.py* to create database and tables.
 
-2.	Run test.ipynb to confirm the creation of tables with correct columns. Restart kernel to close connection to the database after running this notebook.
+2.	Run *test.ipynb* to confirm the creation of tables with correct columns. Restart kernel to close connection to the database after running this notebook.
 
-3.	Built ETL process in etl.ipynb notebook to develop ETL processes for each table. After running ETL process, run test.ipynb to confirm that records were successfully inserted into each table. Re-run create_tables.py to reset tables before each time running etl.ipynb
+3.	Built ETL process in *etl.ipynb* notebook to develop ETL processes for each table. After running ETL process, run *test.ipynb* to confirm that records were successfully inserted into each table. Re-run *create_tables.py* to reset tables before each time running *etl.ipynb*
 
       a.	Songs table: 
         
@@ -126,11 +126,11 @@
       
       e.	Songplay table
 
-       •	Use pandas.read_json to read in user activity log data
+        •	Use pandas.read_json to read in user activity log data
 
-       •	Use NextSong function to filter records
+        •	Use NextSong function to filter records
 
-       •	Select all fields listed as columns in the dimension table:  songplay_table_create  in the schema below. 
+        •	Select all fields listed as columns in the dimension table:  songplay_table_create  in the schema below. 
 
         •	Since song_id and artist_id are not included in user activity log data, use SQL query to get this data from song table and artist table created above or from song data file.
 
