@@ -2,19 +2,19 @@
 
 # **Introduction**
 
-*1.	Background: *
+*1.	Background:*
     
-     A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app.
+   A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app.
 
-*2.	Challenge: *
+*2.	Challenge:*
    
-    Currently, there is no easy way to query their data. Songs and user activity data are stored seperately in JASON files format.  
+   Currently, there is no easy way to query their data. Songs and user activity data are stored seperately in JASON files format.  
 
-*3.	Goal: *
+*3.	Goal:*
     
-    Create a PostgreSQL database schema and ETL pipeline to optimize queries that can join both tables.
+   Create a PostgreSQL database schema and ETL pipeline to optimize queries that can join both tables.
    
-    Test database and ETL pipeline by running queries
+   Test database and ETL pipeline by running queries
 
 # Project Description
 
