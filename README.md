@@ -79,6 +79,7 @@
 ## DATABASE SCHEMA:
   I created below star schema that normalizes two big data sets which includes a fact table and 4 dimension tables:
  
+ ![alt text](https://github.com/dannyledao/Data-Modeling-with-Postgres/blob/567448a37012706b0d6f034f651c92c59218dffc/schema%20table.PNG)
 ## PROJECT STEPS:
 
 1.	Create tables in sql_queries.py and run create_tables.py to create database and tables.
