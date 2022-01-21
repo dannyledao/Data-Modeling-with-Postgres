@@ -10,12 +10,20 @@ def process_song_file(cur, filepath):
     df = pd.read_json(filepath, lines =True)
 
     # insert song record
-    song_data = df[['song_id','title','artist_id','year','duration']]
-    song_data = song_data.values.flatten().tolist()
+    song_data = df[['song_id','title','artist_id','year','duration']].values.flatten().tolist()
     cur.execute(song_table_insert, song_data)
     
     # insert artist record
-    artist_data = df[['artist_id','artist_name','artist_location','artist_latitude','artist_longitude']]
+    artist_data = df[
+        [
+            "artist_id",
+            "artist_name",
+            "artist_location",
+            "artist_latitude",
+            "artist_longitude",
+        ]
+    ].values.flatten().tolist()
+
     cur.execute(artist_table_insert, artist_data)
 
 
@@ -24,15 +32,16 @@ def process_log_file(cur, filepath):
     df = pd.read_json(filepath,lines=True)
 
     # filter by NextSong action
-    df = [df.page=='Next Song']
+    df = df[df['page']=='Next Song'].copy()
 
     # convert timestamp column to datetime
-    t = pd.to_datetime(df.ts,unit='ms')
+    
+    t= pd.to_datetime(df["ts"], unit='ms')   
     
     # insert time data records
-    time_data = (t.ts, t.ts.dt.hour, t.ts.dt.day, t.ts.dt.dayofweek, t.ts.dt.month, t.ts.dt.year, t.ts.dt.weekday)
+    time_data = (t, t.dt.hour, t.dt.day, t.dt.dayofweek, t.dt.month, t.dt.year, t.dt.weekday)
     column_labels = ('time','hour','day','week','month','year','weekday')
-    time_df = pd.DataFrame(columns=column_labels)
+    time_df = pd.DataFrame({k: v.values.flatten().tolist() for k,v in zip(column_labels,time_data)})
 
     for i, row in time_df.iterrows():
         try:
@@ -41,7 +50,7 @@ def process_log_file(cur, filepath):
             print("Error: Inserting row for table: users")
             print(e)
     # load user table
-    user_df = df[['userID','firstName','lastName','gender','level']]
+    user_df = df[['userId','firstName','lastName','gender','level']]
 
     # insert user records
     for i, row in user_df.iterrows():
@@ -61,7 +70,7 @@ def process_log_file(cur, filepath):
                 songid, artistid = None, None
 
         # insert songplay record
-            songplay_data = (row.ts, row.userID, row.level, songid, artistid, row.sessionID, row.location, row.userAgent)
+            songplay_data = (row.ts, row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
             cur.execute(songplay_table_insert, songplay_data)
            
      
