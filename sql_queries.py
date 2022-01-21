@@ -54,7 +54,7 @@ CREATE TABLE artists (
 
 time_table_create = ("""
 CREATE TABLE time (
-    start_time bigint NOT NULL PRIMARY KEY
+    start_time timestamp NOT NULL PRIMARY KEY
     ,hour int NOT NULL
     ,day int NOT NULL
     ,week int NOT NULL
