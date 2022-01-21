@@ -90,18 +90,15 @@ def process_log_file(cur, filepath):
             songplay_data = (row.ts, row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
             cur.execute(songplay_table_insert, songplay_data)
            
-     
-
+        
 def process_data(cur, conn, filepath, func):
-   """ Process all JSON files in data directory path in both song and log database.
+   
+    """ Process all JSON files in data directory path in both song and log database.
         cur (psycopg2.cursor): PostgreSQL database cursor
         conn (psycopg2.connection): Establishing connection with sparkify database
         filepath (str): directory
         func (function): processing function
-    """
-
-
-
+   """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
